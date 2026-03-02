@@ -14,20 +14,21 @@ html {
   animation: kawa-drift 16s ease-in-out infinite;
 }
 
-/* River line — droplets flowing downward */
+/* River line — a light droplet flows downward along the line */
 @keyframes river-flow {
-  0%   { background-position: 0 0%; }
-  100% { background-position: 0 100%; }
+  0%   { background-position: 0 -100%; }
+  100% { background-position: 0 200%; }
 }
 
 .animate-river-flow {
-  background-image: repeating-linear-gradient(
+  background: linear-gradient(
     to bottom,
-    transparent        0px,
-    transparent        12px,
-    rgba(255,255,255,0.18) 12px,
-    rgba(255,255,255,0.18) 13px
+    transparent 0%,
+    rgba(255,255,255,0.0) 20%,
+    rgba(255,255,255,0.5) 50%,
+    rgba(255,255,255,0.0) 80%,
+    transparent 100%
   );
-  background-size: 100% 26px;
-  animation: river-flow 2.4s linear infinite;
+  background-size: 100% 200%;
+  animation: river-flow 2.8s ease-in-out infinite;
 }

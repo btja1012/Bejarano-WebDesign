@@ -53,13 +53,6 @@ export default function Philosophy() {
                 motion, letting go of what doesn&apos;t serve the journey, and trusting that
                 the current knows where it&apos;s going.
               </p>
-              <p>
-                There&apos;s a model in occupational therapy called the Kawa Model. It uses
-                the river as a metaphor for a person&apos;s life energy — where rocks are
-                obstacles, driftwood is the baggage we carry, and the goal is to find
-                the channels where the water still flows freely. I didn&apos;t know about
-                it when I chose the name. But it fits.
-              </p>
             </div>
 
             {/* Facts */}
