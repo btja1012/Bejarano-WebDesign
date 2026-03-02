@@ -25,7 +25,7 @@ const languageColors: Record<string, string> = {
 async function getRepos(): Promise<Repo[]> {
   try {
     const res = await fetch(
-      `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=12`,
+      `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`,
       { next: { revalidate: 3600 } }
     );
     if (!res.ok) return [];
