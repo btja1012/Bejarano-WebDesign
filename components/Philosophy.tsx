@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Philosophy() {
   return (
     <section id="philosophy" className="py-32 px-6 bg-black border-t border-white/5">
@@ -5,9 +7,24 @@ export default function Philosophy() {
 
         <p className="text-white/20 text-xs tracking-[0.4em] uppercase mb-16">The Source</p>
 
-        <div className="grid md:grid-cols-2 gap-20 items-start">
+        <div className="grid md:grid-cols-3 gap-16 items-start">
+          {/* Photo */}
+          <div className="md:col-span-1">
+            <div className="relative w-full aspect-[3/4] overflow-hidden">
+              <Image
+                src="/andres.jpg"
+                alt="Andres Bejarano"
+                fill
+                className="object-cover object-top grayscale"
+                sizes="(max-width: 768px) 100vw, 33vw"
+                priority
+              />
+            </div>
+            <p className="text-white/15 text-xs mt-3 tracking-widest uppercase">Andres Bejarano · Heredia, CR</p>
+          </div>
+
           {/* Main story */}
-          <div className="space-y-8">
+          <div className="md:col-span-2 space-y-12">
             <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">
               川 means river.<br />
               <span className="text-white/40">It also means let go.</span>
@@ -37,25 +54,25 @@ export default function Philosophy() {
                 the current knows where it&apos;s going.
               </p>
             </div>
-          </div>
 
-          {/* Facts */}
-          <div className="space-y-6 pt-4">
-            {[
-              { label: "Based in", value: "Heredia, Costa Rica" },
-              { label: "Current role", value: "Technical Support Engineer · Torq" },
-              { label: "Experience", value: "9+ years in AppSec & Software Development" },
-              { label: "Specialty", value: "Application Security · API Security · Automation" },
-              { label: "Studying", value: "Web Development & Design · Universidad Fidelitas" },
-              { label: "Philosophy", value: "Let it flow — keep building, keep learning" },
-            ].map((item) => (
-              <div key={item.label} className="flex gap-6 py-5 border-b border-white/5">
-                <span className="text-white/20 text-xs tracking-widest uppercase w-28 flex-shrink-0 pt-0.5">
-                  {item.label}
-                </span>
-                <span className="text-white/70 font-light">{item.value}</span>
-              </div>
-            ))}
+            {/* Facts */}
+            <div className="space-y-0 pt-4 border-t border-white/5">
+              {[
+                { label: "Based in", value: "Heredia, Costa Rica" },
+                { label: "Current role", value: "Technical Support Engineer · Torq" },
+                { label: "Experience", value: "9+ years in AppSec & Software Development" },
+                { label: "Specialty", value: "Application Security · API Security · Automation" },
+                { label: "Studying", value: "Web Development & Design · Universidad Fidelitas" },
+                { label: "Philosophy", value: "Let it flow — keep building, keep learning" },
+              ].map((item) => (
+                <div key={item.label} className="flex gap-6 py-4 border-b border-white/5">
+                  <span className="text-white/20 text-xs tracking-widest uppercase w-28 flex-shrink-0 pt-0.5">
+                    {item.label}
+                  </span>
+                  <span className="text-white/60 font-light text-sm">{item.value}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
