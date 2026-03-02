@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react";
 
 const links = [
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
+  { label: "Source", href: "#philosophy" },
+  { label: "Journey", href: "#timeline" },
+  { label: "Work", href: "#projects" },
+  { label: "Connect", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -21,22 +21,22 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-gray-950/90 backdrop-blur-sm border-b border-gray-800" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? "bg-black/90 backdrop-blur-sm border-b border-white/5" : "bg-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold text-blue-500 hover:text-blue-400 transition-colors">
-          AB
+      <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+        <a href="#" className="flex items-center gap-2 group">
+          <span className="text-2xl font-light text-white/30 group-hover:text-white/60 transition-colors select-none">川</span>
+          <span className="text-sm font-semibold tracking-widest uppercase text-white/70 group-hover:text-white transition-colors">Kawa</span>
         </a>
 
-        {/* Desktop links */}
-        <ul className="hidden md:flex gap-8">
+        <ul className="hidden md:flex gap-10">
           {links.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-gray-400 hover:text-gray-100 transition-colors text-sm font-medium"
+                className="text-white/40 hover:text-white transition-colors text-xs font-medium tracking-widest uppercase"
               >
                 {link.label}
               </a>
@@ -44,31 +44,29 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Mobile hamburger */}
         <button
-          className="md:hidden text-gray-400 hover:text-gray-100"
+          className="md:hidden text-white/40 hover:text-white transition-colors"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {menuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
             )}
           </svg>
         </button>
       </div>
 
-      {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-gray-900 border-t border-gray-800 px-6 py-4">
-          <ul className="flex flex-col gap-4">
+        <div className="md:hidden bg-black border-t border-white/5 px-6 py-6">
+          <ul className="flex flex-col gap-5">
             {links.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-gray-400 hover:text-gray-100 transition-colors text-sm font-medium"
+                  className="text-white/40 hover:text-white transition-colors text-xs font-medium tracking-widest uppercase"
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
