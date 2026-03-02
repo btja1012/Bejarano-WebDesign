@@ -1,27 +1,5 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import RiverLine from "@/components/RiverLine";
-import Philosophy from "@/components/Philosophy";
-import Timeline from "@/components/Timeline";
-import Projects from "@/components/Projects";
-import Skills from "@/components/Skills";
-import Contact from "@/components/Contact";
+import PageContent from "@/components/PageContent";
 
 export default function Home() {
-  return (
-    <main>
-      <Navbar />
-      <Hero />
-      <RiverLine />
-      <Philosophy />
-      <RiverLine />
-      <Timeline />
-      <RiverLine />
-      <Projects />
-      <RiverLine />
-      <Skills />
-      <RiverLine />
-      <Contact />
-    </main>
-  );
+  return <PageContent lang="en" />;
 }

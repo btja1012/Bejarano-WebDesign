@@ -1,17 +1,27 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { translations, type Lang } from "@/lib/translations";
 
-const links = [
-  { label: "Source", href: "#philosophy" },
-  { label: "Journey", href: "#timeline" },
-  { label: "Work", href: "#projects" },
-  { label: "Connect", href: "#contact" },
+const langOptions: { code: Lang; label: string; href: string }[] = [
+  { code: "en", label: "EN", href: "/" },
+  { code: "es", label: "ES", href: "/es" },
+  { code: "ja", label: "JP", href: "/ja" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const lang: Lang = pathname.startsWith("/es")
+    ? "es"
+    : pathname.startsWith("/ja")
+    ? "ja"
+    : "en";
+
+  const { links } = translations[lang].nav;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -26,7 +36,7 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2 group">
+        <a href={langOptions.find((l) => l.code === lang)?.href ?? "/"} className="flex items-center gap-2 group">
           <span className="text-2xl font-light text-white/30 group-hover:text-white/60 transition-colors select-none">川</span>
           <span className="text-sm font-semibold tracking-widest uppercase text-white/70 group-hover:text-white transition-colors">Kawa</span>
         </a>
@@ -43,6 +53,24 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
+
+        <div className="hidden md:flex items-center gap-1">
+          {langOptions.map((opt, i) => (
+            <span key={opt.code} className="flex items-center">
+              {i > 0 && <span className="text-white/15 mx-1 text-xs">·</span>}
+              <a
+                href={opt.href}
+                className={`text-xs tracking-widest transition-colors ${
+                  lang === opt.code
+                    ? "text-white/70"
+                    : "text-white/20 hover:text-white/50"
+                }`}
+              >
+                {opt.label}
+              </a>
+            </span>
+          ))}
+        </div>
 
         <button
           className="md:hidden text-white/40 hover:text-white transition-colors"
@@ -74,6 +102,21 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+          <div className="flex items-center gap-3 mt-6 pt-6 border-t border-white/5">
+            {langOptions.map((opt) => (
+              <a
+                key={opt.code}
+                href={opt.href}
+                className={`text-xs tracking-widest transition-colors ${
+                  lang === opt.code
+                    ? "text-white/70"
+                    : "text-white/20 hover:text-white/50"
+                }`}
+              >
+                {opt.label}
+              </a>
+            ))}
+          </div>
         </div>
       )}
     </nav>

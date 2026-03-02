@@ -1,3 +1,5 @@
+import type { ProjectsT } from "@/lib/translations";
+
 const GITHUB_USERNAME = "btja1012";
 
 interface Repo {
@@ -26,22 +28,26 @@ async function getRepos(): Promise<Repo[]> {
   }
 }
 
-export default async function Projects() {
+interface Props {
+  t: ProjectsT;
+}
+
+export default async function Projects({ t }: Props) {
   const repos = await getRepos();
 
   return (
     <section id="projects" className="py-32 px-6 bg-black border-t border-white/5">
       <div className="max-w-6xl mx-auto">
-        <p className="text-white/20 text-xs tracking-[0.4em] uppercase mb-4">Built Along the Way</p>
+        <p className="text-white/20 text-xs tracking-[0.4em] uppercase mb-4">{t.eyebrow}</p>
         <h2 className="text-4xl md:text-5xl font-light text-white mb-4 leading-tight">
-          Recent work
+          {t.heading}
         </h2>
         <p className="text-white/30 font-light mb-20 max-w-xl">
-          Projects pulled live from GitHub. Side work, experiments, things built out of curiosity.
+          {t.subheading}
         </p>
 
         {repos.length === 0 ? (
-          <p className="text-white/20 font-light">No repositories found.</p>
+          <p className="text-white/20 font-light">{t.noRepos}</p>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
             {repos.map((repo) => (
@@ -73,7 +79,7 @@ export default async function Projects() {
                 <div className="flex items-center gap-5 text-white/20 text-xs">
                   {repo.language && <span>{repo.language}</span>}
                   <span>★ {repo.stargazers_count}</span>
-                  <span>{repo.forks_count} forks</span>
+                  <span>{repo.forks_count} {t.forks}</span>
                 </div>
               </a>
             ))}
@@ -87,7 +93,7 @@ export default async function Projects() {
             rel="noopener noreferrer"
             className="text-white/30 hover:text-white text-xs tracking-widest uppercase transition-colors border-b border-white/10 hover:border-white/40 pb-0.5"
           >
-            All repositories on GitHub →
+            {t.allRepos}
           </a>
         </div>
       </div>

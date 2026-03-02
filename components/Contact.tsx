@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { ContactT } from "@/lib/translations";
 
 const socials = [
   {
@@ -20,7 +21,11 @@ const socials = [
   },
 ];
 
-export default function Contact() {
+interface Props {
+  t: ContactT;
+}
+
+export default function Contact({ t }: Props) {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
@@ -57,13 +62,12 @@ export default function Contact() {
         <div className="grid md:grid-cols-2 gap-20">
           {/* Left */}
           <div>
-            <p className="text-white/20 text-xs tracking-[0.4em] uppercase mb-4">Connect</p>
+            <p className="text-white/20 text-xs tracking-[0.4em] uppercase mb-4">{t.eyebrow}</p>
             <h2 className="text-4xl md:text-5xl font-light text-white mb-8 leading-tight">
-              Let&apos;s talk.
+              {t.heading}
             </h2>
             <p className="text-white/40 font-light leading-relaxed mb-12 max-w-sm">
-              Whether it&apos;s a security question, a collaboration, or just a conversation —
-              the river is always open.
+              {t.intro}
             </p>
 
             <div className="space-y-4 text-white/30 text-sm font-light">
@@ -98,7 +102,7 @@ export default function Contact() {
                 required
                 value={form.name}
                 onChange={handleChange}
-                placeholder="Your name"
+                placeholder={t.namePlaceholder}
                 className={inputClass}
               />
             </div>
@@ -109,7 +113,7 @@ export default function Contact() {
                 required
                 value={form.email}
                 onChange={handleChange}
-                placeholder="Your email"
+                placeholder={t.emailPlaceholder}
                 className={inputClass}
               />
             </div>
@@ -120,7 +124,7 @@ export default function Contact() {
                 rows={5}
                 value={form.message}
                 onChange={handleChange}
-                placeholder="Your message"
+                placeholder={t.messagePlaceholder}
                 className={`${inputClass} resize-none`}
               />
             </div>
@@ -130,14 +134,14 @@ export default function Contact() {
               disabled={status === "sending"}
               className="text-white/50 hover:text-white disabled:text-white/20 text-xs tracking-widest uppercase transition-colors border-b border-white/10 hover:border-white/40 pb-0.5 disabled:cursor-not-allowed"
             >
-              {status === "sending" ? "Sending..." : "Send message →"}
+              {status === "sending" ? t.sending : t.submit}
             </button>
 
             {status === "success" && (
-              <p className="text-white/40 text-sm font-light">Message sent. I&apos;ll be in touch.</p>
+              <p className="text-white/40 text-sm font-light">{t.success}</p>
             )}
             {status === "error" && (
-              <p className="text-white/40 text-sm font-light">Something went wrong. Try again.</p>
+              <p className="text-white/40 text-sm font-light">{t.error}</p>
             )}
           </form>
         </div>

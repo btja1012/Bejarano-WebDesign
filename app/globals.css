@@ -4,6 +4,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  font-family: var(--font-inter), var(--font-noto-jp), sans-serif;
+}
+
 /* 川 hero drift — slow upward float */
 @keyframes kawa-drift {
   0%, 100% { transform: translateY(0px);   opacity: 0.03; }
