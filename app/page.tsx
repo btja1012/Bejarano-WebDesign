@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import RiverLine from "@/components/RiverLine";
 import Philosophy from "@/components/Philosophy";
 import Timeline from "@/components/Timeline";
 import Projects from "@/components/Projects";
@@ -11,10 +12,15 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
+      <RiverLine />
       <Philosophy />
+      <RiverLine />
       <Timeline />
+      <RiverLine />
       <Projects />
+      <RiverLine />
       <Skills />
+      <RiverLine />
       <Contact />
     </main>
   );

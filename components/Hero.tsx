@@ -6,7 +6,7 @@ export default function Hero() {
         className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
         aria-hidden="true"
       >
-        <span className="text-[32rem] font-thin text-white/[0.03] leading-none">川</span>
+        <span className="text-[32rem] font-thin leading-none animate-kawa-drift">川</span>
       </div>
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">

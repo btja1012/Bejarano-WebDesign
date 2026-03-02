@@ -3,3 +3,31 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* 川 hero drift — slow upward float */
+@keyframes kawa-drift {
+  0%, 100% { transform: translateY(0px);   opacity: 0.03; }
+  50%       { transform: translateY(-40px); opacity: 0.045; }
+}
+
+.animate-kawa-drift {
+  animation: kawa-drift 16s ease-in-out infinite;
+}
+
+/* River line — droplets flowing downward */
+@keyframes river-flow {
+  0%   { background-position: 0 0%; }
+  100% { background-position: 0 100%; }
+}
+
+.animate-river-flow {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent        0px,
+    transparent        12px,
+    rgba(255,255,255,0.18) 12px,
+    rgba(255,255,255,0.18) 13px
+  );
+  background-size: 100% 26px;
+  animation: river-flow 2.4s linear infinite;
+}
